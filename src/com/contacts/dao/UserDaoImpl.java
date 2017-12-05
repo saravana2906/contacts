@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 		statement.setString(4, user.getPhoneno());
 		int rows=statement.executeUpdate();
 		
-	System.out.println("Rows inserted : "+ rows);
+	System.out.println("Rows inserted  "+ rows);
 		}
 		catch(Exception e){
 			
