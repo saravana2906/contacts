@@ -4,12 +4,25 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
-    <package name="/" extends="struts-default">
+       <package name="default" extends="struts-default">
+     <interceptors>
+    <interceptor name="sessionmanage" class="com.contacts.interceptors.SessionInterceptor" />
+    <interceptor-stack name="appStack">  
+         <interceptor-ref name="defaultStack"/>
+         <interceptor-ref name="sessionmanage"/> 
+    </interceptor-stack> 
+    </interceptors>
+    <default-interceptor-ref name="appStack"></default-interceptor-ref>
             <action name="">
             <result>/signup.jsp</result>
         </action>
         <action name="signup">
-            <result>/signup.jsp</result>
+           <result>/signup.jsp</result>
+        </action>
+        <action name="signup_action" class="com.contacts.actions.SignupAction" method="execute">
+        <result name="input">/signup.jsp</result>
+            <result>/succcess.jsp</result>
         </action>
    </package>
 </struts>
+

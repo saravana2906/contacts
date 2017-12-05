@@ -4,7 +4,7 @@ public class SignupForm {
 	
 	private String username;
 	private String emailid;
-	private String phoneNo;
+	private String phoneno;
 	private String password;
 	private String confirmpassword;
 	public String getUsername() {
@@ -19,12 +19,8 @@ public class SignupForm {
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
 	}
-	public String getPhoneNo() {
-		return phoneNo;
-	}
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
-	}
+
+	
 	public String getPassword() {
 		return password;
 	}
@@ -36,6 +32,12 @@ public class SignupForm {
 	}
 	public void setConfirmpassword(String confirmpassword) {
 		this.confirmpassword = confirmpassword;
+	}
+	public String getPhoneno() {
+		return phoneno;
+	}
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
 	}
 
 }
