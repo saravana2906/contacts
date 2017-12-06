@@ -21,7 +21,7 @@
         </action>
         <action name="signup_action" class="com.contacts.actions.SignupAction" method="execute">
         <result name="input">/signup.jsp</result>
-            <result>/succcess.jsp</result>
+            <result name="success">/success_signup.jsp</result>
         </action>
    </package>
 </struts>
