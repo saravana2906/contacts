@@ -23,6 +23,13 @@
         <result name="input">/signup.jsp</result>
             <result name="success">/success_signup.jsp</result>
         </action>
+          <action name="login">
+           <result>/login.jsp</result>
+        </action>
+        <action name="login_action" class="com.contacts.actions.LoginAction" method="execute">
+        <result name="input">/login.jsp</result>
+            <result name="success">/home.jsp</result>
+        </action>
    </package>
 </struts>
 

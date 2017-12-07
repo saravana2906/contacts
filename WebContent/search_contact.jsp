@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Page</title>
+<title>Search Contact</title>
 <style>
 body {
     width: 100%;
@@ -15,10 +14,9 @@ position: block ;
   height: 50%;
   width: 50%;
   background: #ffffff;
-  margin-top: 100px;
-  margin-right: 100px;
-  margin-bottom: 100px;
+
   margin-left: 300px;
+  margin-top: 100px;
   text-align: center;
 }
 fieldset input {
@@ -29,7 +27,7 @@ fieldset input {
   {
   position: block ;
   text-align: center;
-  margin-top: 75px;
+  margin-top: 10px;
   } 
   #btn-grp
   {
@@ -38,13 +36,20 @@ fieldset input {
   }
 </style>
 </head>
-<s:head/>
 <body>
-  <s:form action="login_action">
-<s:textfield name="login.emailid"  label ="Email id"/> 
-<s:password name="login.password"  label ="Password"/> 
- <s:submit value="Sign In" />
- </s:form>
-  <a href="signup.jsp">Sign Up</a>
+<form>
+ <fieldset>
+  <legend>Search Page</legend>
+  <div id="content">
+  Contact Name: <input type="text" name="username" id="username" /><br> OR <br>
+  Email id: <input type="text" name="emailid" id="emailid" /><br> OR <br>
+  Phone No: <input type="text" name="phone" id="phone" /><br>
+  
+  <div id="btn-grp">
+  <input type="submit"  value="Search" />
+      </div>
+</div>
+ </fieldset>
+</form>
 </body>
 </html>

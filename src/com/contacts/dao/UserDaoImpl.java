@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
 	public User getUser(String emailid) {
 		// TODO Auto-generated method stub
 		Connection con=DatabaseUtil.getConnection();
-		String getUserQuery="select * form user where email_id=?";
+		String getUserQuery="select * from users where email_id=?";
 		ResultSet rs;
 		User user=new User();
 try
@@ -54,6 +54,7 @@ try
 	PreparedStatement statement = con.prepareStatement(getUserQuery);
 	statement.setString(1,emailid);
 	rs=statement.executeQuery();
+	rs.next();
 	user.setUserid(rs.getLong(1));
 	user.setUsername(rs.getString(2));
 	user.setPassword(rs.getString(3));
@@ -70,5 +71,4 @@ catch(Exception e)
 		return user;
 	}
 	
-
 }
