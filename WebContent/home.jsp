@@ -10,6 +10,6 @@
 <p>Welcome to Contacts</p>
 <a href="view_contact.jsp">View all Contact</a>
 <a href="search_contact.jsp">Search Contact</a>
-<a href="add_contact.jsp">Add Contact</a>
+<a href="add_contact.jsp" target="_blank">Add Contact</a>
 </body>
 </html>

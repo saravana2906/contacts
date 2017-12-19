@@ -25,6 +25,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		UserDao userdao=new UserDaoImpl();
 		User user=new User();
 		user=userdao.getUser(login.getEmailid());
+		if(user!=null)
+		{
 	if( MD5util.getMD5(login.getPassword()).equals(user.getPassword()))
 	{
 		userSession.put("login","true");
@@ -35,8 +37,16 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	}
 	else
 	{
+		System.out.println("inside error 1");
 		addActionError("Email Id or Password is in correct");
 	}
+		}
+		else
+		{
+			System.out.println("inside error 2");
+			addActionError("Email Id or Password is in correct");
+		}
+		
 	return INPUT;
 	}
 

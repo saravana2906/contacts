@@ -40,6 +40,11 @@ fieldset input {
 </head>
 <s:head/>
 <body>
+<s:if test="hasActionErrors()">
+   <div class="errors">
+      <s:actionerror/>
+   </div>
+</s:if>
   <s:form action="login_action">
 <s:textfield name="login.emailid"  label ="Email id"/> 
 <s:password name="login.password"  label ="Password"/> 
