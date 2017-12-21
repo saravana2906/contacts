@@ -1,7 +1,20 @@
 package com.contacts.beans;
 
+import com.contacts.forms.AddContactForm;
+
 public class Contact {
 	
+	public Contact() {
+		
+	}
+
+	public Contact(String userid, AddContactForm contactform) {
+	// TODO Auto-generated constructor stub
+		this.userid=Long.parseLong(userid);
+		this.name=contactform.getName();
+		this.emailid=contactform.getEmailid();
+		
+}
 	private long contactid;
 	private long userid;
 	private String name;
