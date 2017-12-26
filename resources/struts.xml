@@ -34,6 +34,10 @@
         <result name="input">/add_contact.jsp</result>
             <result name="success">/home.jsp</result>
         </action>
+          <action name="all_view_action" class="com.contacts.actions.ViewContactAction" method="execute">
+        <result name="input">/home.jsp</result>
+            <result name="success">/home.jsp</result>
+        </action>
    </package>
 </struts>
 

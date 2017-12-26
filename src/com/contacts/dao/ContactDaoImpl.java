@@ -3,7 +3,10 @@ package com.contacts.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.contacts.beans.Contact;
 import com.contacts.util.DatabaseUtil;
@@ -11,6 +14,7 @@ import com.contacts.util.DatabaseUtil;
 public class ContactDaoImpl implements ContactDao {
 	
 	public static String insert_contact="insert into contacts.user_contact values(null,?,?,?,now(),now())";
+	public static String getAllContacts_query="select * from contacts.user_contact where user_id=? order by contact_id";
 	@Override
 	public long addContact(Contact contact) {
 		// TODO Auto-generated method stub
@@ -54,6 +58,43 @@ public class ContactDaoImpl implements ContactDao {
 	public boolean deleteContact(long contactid) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Contact> getAllContacts(long userid) {
+		// TODO Auto-generated method stub
+		Connection con=DatabaseUtil.getConnection();
+		List<Contact> contacts = new ArrayList<Contact>(); 
+		System.out.println("In Dao");
+		ResultSet rs=null;
+		try
+		{
+		PreparedStatement statement = con.prepareStatement(ContactDaoImpl.getAllContacts_query);
+		statement.setLong(1, userid);
+		rs=statement.executeQuery();
+		while(rs.next())
+		{
+			Contact tmpContact=new Contact();
+			tmpContact.setContactid(rs.getLong(1));
+			tmpContact.setName(rs.getString(3));
+			tmpContact.setEmailid(rs.getString(4));
+			contacts.add(tmpContact);
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return contacts;
 	}
 
 }

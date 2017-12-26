@@ -5,7 +5,7 @@ import com.contacts.forms.AddContactForm;
 public class Contact {
 	
 	public Contact() {
-		
+		    
 	}
 
 	public Contact(String userid, AddContactForm contactform) {
