@@ -20,10 +20,18 @@ public class ViewContactAction extends ActionSupport implements SessionAware{
 	private Map<String, Object> userSession;
 	public List<Contact> contacts;
 	public HashMap<Long,ContactPhone> phones;
-	public ContactService conservice=new ContactService();
+	public ContactService getConservice() {
+		return conservice;
+	}
+
+	public void setConservice(ContactService conservice) {
+		this.conservice = conservice;
+	}
+
+	public ContactService conservice;
 	public String execute() throws Exception {
 		
-		
+		conservice=new ContactService();
 		this.contacts=conservice.getAllContacts(Long.parseLong((String) userSession.get("userid")));
 		this.phones=conservice.getAllPhones(Long.parseLong((String) userSession.get("userid")));
 		
