@@ -11,6 +11,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Contacts</title>
+<script>
+function selectRow(x) {
+	   // alert("Row index is: " + x.rowIndex);
+	    var con=x.getElementsByTagName('input')[0];
+	    console.log("Value of hidden :"+ con.getAttribute('value'));
+	    
+	    var con_id=document.getElementById('contactid');
+	    con_id.setAttribute('value',con.getAttribute('value'));
+	    console.log(con_id.getAttribute('value'));
+	    document.getElementById("edit_contact").submit();
+	}
+
+</script>
 <style>
 table {
     font-family: arial, sans-serif;
@@ -44,6 +57,9 @@ font-color: blue;
 </head>
 <body>
 <div id="contents">
+<form action="edit_contact" id="edit_contact">
+<input type="hidden" name="contactid" id="contactid" value="">
+</form>
 <table class="centered">
 <tr>
 <th>contact name</th>
@@ -58,10 +74,10 @@ List<Contact> contacts=conservice.getAllContacts(Long.parseLong((String)session.
   HashMap<Long,ContactPhone> phones=conservice.getAllPhones(Long.parseLong((String)session.getAttribute("userid")));
 for(Contact contact : contacts)
 {
-	String msg="";
 	ContactPhone phone=phones.get(contact.getContactid());
 %>
-<tr>
+<tr onclick="selectRow(this)">
+<input type="hidden" name="id" value=<%= contact.getContactid() %> />
 <td rowspan=<%= phone.getPhoneid().size() %>><input type="hidden" name="contact_id" value=<%= contact.getContactid() %>/>  <%=contact.getName() %></td>
 <td rowspan=<%= phone.getPhoneid().size() %>><%= contact.getEmailid() %></td>
 <%
