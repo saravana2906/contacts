@@ -15,6 +15,7 @@ public class ContactDaoImpl implements ContactDao {
 	
 	public static String insert_contact="insert into contacts.user_contact values(null,?,?,?,now(),now())";
 	public static String getAllContacts_query="select * from contacts.user_contact where user_id=? order by contact_id";
+	public static String deleteContact="delete from contacts.user_contact where contact_id=?";
 	@Override
 	public long addContact(Contact contact) {
 		// TODO Auto-generated method stub
@@ -57,6 +58,23 @@ public class ContactDaoImpl implements ContactDao {
 	@Override
 	public boolean deleteContact(long contactid) {
 		// TODO Auto-generated method stub
+		Connection con=DatabaseUtil.getConnection();
+		int count=0;
+		try {
+			PreparedStatement statement = con.prepareStatement(ContactDaoImpl.deleteContact);
+			statement.setLong(1,contactid);
+			count=statement.executeUpdate();
+			System.out.println(count);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		
+		if(count>0)
+		{
+			return true;
+		}
 		return false;
 	}
 

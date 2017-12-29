@@ -20,7 +20,29 @@ function selectRow(x) {
 	    var con_id=document.getElementById('contactid');
 	    con_id.setAttribute('value',con.getAttribute('value'));
 	    console.log(con_id.getAttribute('value'));
-	    document.getElementById("edit_contact").submit();
+	  //  document.getElementById("edit_contact").submit();
+	}
+	
+	function submitAction( button)
+	{
+		var txt=button.innerHTML;
+		var form=document.getElementById("multiform");
+		if(txt.indexOf("Update")>-1)
+			{
+			form.setAttribute('action','edit_contact');
+			//form.submit();
+			}
+		else if(txt.indexOf("Delete")>-1)
+			{
+			form.setAttribute('action','delete_contact');
+			form.submit();
+			}
+		else
+			{
+			console.log("Not Valid input");
+			}
+		console.log(txt);
+	
 	}
 
 </script>
@@ -57,9 +79,11 @@ font-color: blue;
 </head>
 <body>
 <div id="contents">
-<form action="edit_contact" id="edit_contact">
+<form  id="multiform">
 <input type="hidden" name="contactid" id="contactid" value="">
 </form>
+<button type="button" onclick="submitAction(this)" value="update">Update</button>
+<button type="button" onclick="submitAction(this)" value="delete">Delete</button>
 <table class="centered">
 <tr>
 <th>contact name</th>
@@ -112,7 +136,7 @@ if(phone.getPhoneid().size()>0)
 
 </table>
 
-<input type="button" value="Back" />
+<a href="home">Back</a>
 </div>
 </body>
 </html>

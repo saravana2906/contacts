@@ -81,6 +81,7 @@ function addRow()
 			inp1.name="contactform.phonenumber["+(i-1)+"]";
 			}
 		x.submit();
+	//	window.close();
 	}
 </script>
 </head>
