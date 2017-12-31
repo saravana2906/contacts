@@ -5,7 +5,8 @@
 <struts>
     <constant name="struts.devMode" value="true" />
        <package name="default" extends="struts-default">
-     <interceptors>
+      
+      <interceptors>
     <interceptor name="sessionmanage" class="com.contacts.interceptors.SessionInterceptor" />
     <interceptor-stack name="appStack">  
          <interceptor-ref name="defaultStack"/>
@@ -13,6 +14,9 @@
     </interceptor-stack> 
     </interceptors>
     <default-interceptor-ref name="appStack"></default-interceptor-ref>
+     <global-results>
+<result name="login">/login.jsp</result>
+</global-results>
             <action name="">
             <result>/signup.jsp</result>
         </action>
@@ -60,9 +64,18 @@
         <param name="contactid">${contactid}</param>
       </result>
       </action>
-        
-         <action name="home">
+         <action name="update_contact" class="com.contacts.actions.UpdateContactAction" method="processForm">
+        <result name="input">/update_contact.jsp</result>
+            <result name="success" type="redirectAction">
+        <param name="actionName">edit_contact</param>
+        <param name="contactid">${contactid}</param>
+      </result>
+        </action>
+            <action name="home">
            <result type="redirect">/home.jsp</result>       
+            </action>
+            <action name="logout_action" class="com.contacts.actions.LogoutAction" method="execute">
+        <result name="success">/login.jsp</result>
             </action>
    </package>
 </struts>

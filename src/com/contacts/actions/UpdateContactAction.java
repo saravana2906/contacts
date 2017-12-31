@@ -1,5 +1,7 @@
 package com.contacts.actions;
 
+import java.util.List;
+
 import com.contacts.beans.Contact;
 import com.contacts.beans.ContactPhone;
 import com.contacts.dao.ContactDao;
@@ -17,6 +19,7 @@ public class UpdateContactAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Contact contact;
 	private ContactPhone cphone;
+	private List<String> phonenumber;
 	
 	public String createForm() throws Exception
 	{
@@ -31,6 +34,22 @@ public class UpdateContactAction extends ActionSupport {
 			System.out.println(cphone.getPhoneid().get(i)+"  "+cphone.getPhonenumber().get(i));
 		}
 		
+		return SUCCESS;
+	}
+	public String processForm() throws Exception
+	{
+		System.out.println("Process Form ");
+		ContactDao cdao=new ContactDaoImpl();
+		System.out.println(contact.getContactid() +"  "+contact.getEmailid() + " "+contact.getName());
+		cdao.updateContact(this.getContact());
+		if(phonenumber!=null)
+		{
+			ContactPhone phone=new ContactPhone();
+			phone.setContactid(contactid);
+			phone.setPhonenumber(phonenumber);
+			ContactPhoneDao phonedao=new ContactPhoneDaoImpl();
+		phonedao.addPhoneno(phone);
+		}
 		return SUCCESS;
 	}
 
@@ -56,6 +75,12 @@ public class UpdateContactAction extends ActionSupport {
 
 	public void setCphone(ContactPhone cphone) {
 		this.cphone = cphone;
+	}
+	public List<String> getPhonenumber() {
+		return phonenumber;
+	}
+	public void setPhonenumber(List<String> phonenumber) {
+		this.phonenumber = phonenumber;
 	}
 
 }

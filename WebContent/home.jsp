@@ -9,7 +9,7 @@
 <body>
 <p>Welcome to Contacts</p>
 <a href="all_view_action">View all Contact</a>
-<a href="search_contact.jsp">Search Contact</a>
 <a href="add_contact.jsp" target="_blank">Add Contact</a>
+<a style="float : right;" href="logout_action">Logout</a>
 </body>
 </html>

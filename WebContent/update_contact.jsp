@@ -70,14 +70,14 @@ function addRow()
 	}
 	function submitform()
 	{
-		var x=document.getElementById('add_contact');
+		var x=document.getElementById('update_contact');
 		var tab=document.getElementById('phonebook');
 		for(var i=1;i<tab.rows.length;i++)
 			{
 			var row=tab.rows[i];
 			console.log("iteration :"+i)
 			var inp1 = row.cells[0].getElementsByTagName('input')[0];
-			inp1.name="contactform.phonenumber["+(i-1)+"]";
+			inp1.name="phonenumber["+(i-1)+"]";
 			}
 			console.log("hi");
 		x.submit();
@@ -144,13 +144,14 @@ update_phone.submit();
    <td><button type="button" onclick="deleteRow(this);return false;" value="-1">-1</button></td>
    </tr>
   </table>
-<form action="add_Action" id="add_contact">
-<input type="hidden" name="contactform.contactid" id="contactid" />
+<form action="update_contact" id="update_contact">
+<input type="hidden" name="contactid" value=<%= contact.getContactid() %> />
+<input type="hidden" name="contact.contactid" value=<%= contact.getContactid() %> />
  <fieldset>
   <legend>Update Contact</legend>
   <div id="content">
-  Contact Name: <input type="text" name="contactform.name" id="name" value=<%= contact.getName() %> /><br>
-  Email id: <input type="text" name="contactform.emailid" id="emailid" value=<%= contact.getEmailid() %> /><br>
+  Contact Name: <input type="text" name="contact.name" id="name" value="<%= contact.getName() %>" /><br>
+  Email id: <input type="text" name="contact.emailid" id="emailid" value=<%= contact.getEmailid() %> /><br>
   Phone No:
 <button onclick="updatephone(this);return false;" name="delete">delete</button> 
 <button onclick="updatephone(this);return false;" name="update">update</button>
