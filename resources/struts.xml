@@ -42,6 +42,25 @@
         <result name="input">/view_contact.jsp</result>
             <result name="success" type="chain">all_view_action</result>
         </action>
+        <action name="edit_contact" class="com.contacts.actions.UpdateContactAction" method="createForm">
+        <result name="input">/view_contact.jsp</result>
+            <result name="success">/update_contact.jsp</result>
+        </action>
+        <action name="delete_phone" class="com.contacts.actions.DeletePhoneNoAction" method="deletePhoneno">
+        <result name="input">/update_contact.jsp</result>
+           <result name="success" type="redirectAction">
+        <param name="actionName">edit_contact</param>
+        <param name="contactid">${contactid}</param>
+      </result>
+      </action>
+       <action name="update_phone" class="com.contacts.actions.UpdatePhoneNoAction" method="updatePhoneno">
+        <result name="input">/update_contact.jsp</result>
+           <result name="success" type="redirectAction">
+        <param name="actionName">edit_contact</param>
+        <param name="contactid">${contactid}</param>
+      </result>
+      </action>
+        
          <action name="home">
            <result type="redirect">/home.jsp</result>       
             </action>

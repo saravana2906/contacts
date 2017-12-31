@@ -23,14 +23,14 @@ function selectRow(x) {
 	  //  document.getElementById("edit_contact").submit();
 	}
 	
-	function submitAction( button)
+	function submitAction( button) 
 	{
 		var txt=button.innerHTML;
 		var form=document.getElementById("multiform");
 		if(txt.indexOf("Update")>-1)
 			{
 			form.setAttribute('action','edit_contact');
-			//form.submit();
+			form.submit();
 			}
 		else if(txt.indexOf("Delete")>-1)
 			{
@@ -92,7 +92,6 @@ font-color: blue;
 </tr>
   <s:set var="conservice" value="conservice" />
   <jsp:useBean id="conservice" type="com.contacts.services.ContactService" />
-   <s:set var="phones" value="phones" />
   <%
 List<Contact> contacts=conservice.getAllContacts(Long.parseLong((String)session.getAttribute("userid")));
   HashMap<Long,ContactPhone> phones=conservice.getAllPhones(Long.parseLong((String)session.getAttribute("userid")));

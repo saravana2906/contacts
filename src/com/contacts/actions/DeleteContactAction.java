@@ -1,18 +1,14 @@
 package com.contacts.actions;
 
 import java.util.Map;
-
-
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.contacts.dao.ContactDao;
 import com.contacts.dao.ContactDaoImpl;
 import com.contacts.dao.ContactPhoneDao;
 import com.contacts.dao.ContactPhoneDaoImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DeleteContactAction extends ActionSupport implements SessionAware {
-	private Map<String, Object> userSession;
+public class DeleteContactAction extends ActionSupport  {
+	
 	private String contactid;
 	
 		/**
@@ -20,12 +16,6 @@ public class DeleteContactAction extends ActionSupport implements SessionAware {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	public void setSession(Map<String, Object> session) {
-		// TODO Auto-generated method stub
-		this.userSession=session;
-		
-	}
 	public String execute() throws Exception {
 		System.out.println("Contact ID :"+contactid);
 		

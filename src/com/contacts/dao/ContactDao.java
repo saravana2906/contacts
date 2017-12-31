@@ -10,4 +10,5 @@ public interface ContactDao {
 	boolean updateContact(Contact contact);
 	boolean deleteContact(long contactid);
    List<Contact> getAllContacts(long userid);
+Contact getContact(long contactid);
 }
