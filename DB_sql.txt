@@ -1,0 +1,42 @@
+CREATE DATABASE contacts;
+CREATE TABLE `contacts.contact_phone` (
+  `phone_id` int(16) NOT NULL AUTO_INCREMENT,
+  `contact_id` int(16) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`phone_id`),
+  UNIQUE KEY `unique_phone` (`contact_id`,`phone_number`)
+) ;
+commit;
+CREATE TABLE `contacts.user_contact` (
+  `contact_id` int(16) NOT NULL AUTO_INCREMENT,
+  `user_id` int(16) DEFAULT NULL,
+  `contact_name` varchar(50) NOT NULL,
+  `email_id` varchar(100) DEFAULT NULL,
+  `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`contact_id`),
+  UNIQUE KEY `unique_contact` (`user_id`,`contact_name`),
+  CONSTRAINT `user_contact_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `contacts.users` (`user_id`)
+) ;
+commit;
+CREATE TABLE `contacts.users` (
+  `user_id` int(16) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(200) NOT NULL,
+  `password` varchar(2000) DEFAULT NULL,
+  `email_id` varchar(100) NOT NULL,
+  `phone_number` varchar(15) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email_id` (`email_id`),
+  UNIQUE KEY `phone_number` (`phone_number`)
+) ;
+commit;
+alter table contacts.users auto_increment=1001;
+commit;
+alter table contacts.contact_phone auto_increment=1001;
+commit;
+alter table contacts.user_contact auto_increment=1001;
+commit;

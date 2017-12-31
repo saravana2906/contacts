@@ -36,6 +36,7 @@ public class SessionInterceptor extends AbstractInterceptor  {
 	else
 	{
 		System.out.println("Invalid session");
+		return "login";
 	}
 			System.out.println("Post-Processing");
 		return "SUCCESS";
